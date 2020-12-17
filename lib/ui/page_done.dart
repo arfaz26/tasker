@@ -134,6 +134,7 @@ class _DonePageState extends State<DonePage>
   }
 
   getExpenseItems(AsyncSnapshot<QuerySnapshot> snapshot) {
+    // ....................................
     snapshot.data.documents.forEach((element) {
       print(element.data);
     });
@@ -215,11 +216,6 @@ class _DonePageState extends State<DonePage>
                       ),
                     ),
                     child: child,
-                    // listElement.isEmpty
-                    //     ? Center(
-                    //         child: Text('NO Task Completed Yet!'),
-                    //       )
-                    //     : child,
                   ),
                 ),
               ),

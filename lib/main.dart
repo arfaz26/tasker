@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -13,6 +12,7 @@ Future<Null> main() async {
   _currentUser = await _signInAnonymously();
   runApp(new TaskistApp());
 }
+
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
 FirebaseUser _currentUser;

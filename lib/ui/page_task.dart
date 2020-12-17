@@ -120,7 +120,9 @@ class _TaskPageState extends State<TaskPage>
                         physics: const BouncingScrollPhysics(),
                         padding: EdgeInsets.only(left: 40.0, right: 40.0),
                         scrollDirection: Axis.horizontal,
-                        children: getExpenseItems(snapshot),
+                        children: snapshot.data.documents.isEmpty
+                            ? getEmptyList()
+                            : getExpenseItems(snapshot),
                       );
                     }),
               ),
@@ -134,6 +136,27 @@ class _TaskPageState extends State<TaskPage>
   @override
   void dispose() {
     super.dispose();
+  }
+
+  List<Widget> getEmptyList() {
+    return List.generate(
+      1,
+      (index) => Container(
+        width: MediaQuery.of(context).size.width / 1.2,
+        child: Center(
+          child: Card(
+            elevation: 0.0,
+            child: Text(
+              'No Tasks :(  Try Adding from above add icon',
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.grey,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 
   getExpenseItems(AsyncSnapshot<QuerySnapshot> snapshot) {
